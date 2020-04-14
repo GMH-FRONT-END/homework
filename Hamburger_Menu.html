@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>B站学习一：使用 HTML+CSS 制作动态 Hamburger Menu</title>
+    <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                background-color: #000;
+            }
+            #toggler:checked+label .box{
+                background-color: cyan;
+            }
+            #toggler{
+                display: none;
+            }
+            .hamburger-containes{
+                display: block;
+                width: 20px;
+                height: 20px;
+                position: relative;
+                top:16px;
+            }
+            .hamburger-containes span{
+                display: block;
+                height: 1px;
+                background-color: #fff;
+                position: relative;
+                transition: transform .3s ease-in-out,top .3s ease-in-out .3s;
+                /* transition: all 0.3s ease-in-out; 交叉变成两条直线的动画效果*/
+                top:0;
+            }
+            .hamburger-containes span:nth-child(2){ /*规定属于其父元素的第二个子元素的每个span的背景色*/
+                margin-top: 7px;
+            }
+            #toggler:checked+label .hamburger-containes span:nth-child(1){
+                 transform: rotate(45deg);  /*旋转45度 */
+                 top:4px;
+                 transition: top .3s ease-in-out,transform .3s ease-in-out .3s;
+            }
+            #toggler:checked+label .hamburger-containes span:nth-child(2){
+                transform: rotate(-45deg);
+                top: -4px;
+                transition: top .3s ease-in-out,transform .3s ease-in-out .3s;
+            }
+            header{
+                background-color: black;
+                height: 44px;
+                padding: 0 18px;
+
+            }
+            body{
+                padding: 0px;
+                margin: 0px;
+            }
+            .nav-items{
+                background-color: rgba(0, 0, 0,.82);
+                width: 100%;
+                height: 100vh;  /* 即是viewport的完整高度 */
+                position: absolute;
+                top: 44px;
+                left: 0;
+                transform: scaleY(0);  /*即垂直方向缩小到0*/
+                transition: transform .3s ease-in-out,opacity .3s ease-in-out .3s;
+                transform-origin: 50% 0;
+                opacity: 0;
+            }
+            #toggler:checked~ .nav-items{
+                transform: scale(1);
+                opacity: 1;
+            }
+            ul{
+                margin-top: 1em;
+            }
+            ul li{
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <input type="checkbox" id="toggler">
+        <label for="toggler">
+            <div class="hamburger-containes">
+                <span></span>
+                <span></span>
+            </div>
+        </label> 
+        <div class="nav-items">
+            <ul>
+                <li>Home</li>
+                <li>iPhone</li>
+                <li>iPad</li>
+                <li>Mac</li>
+                <li>TV</li>
+            </ul>
+        </div>
+    </header>
+</body>
+</html>
