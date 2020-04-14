@@ -4,9 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>CSS Selector(选择器)</title>
+    <style>
+    #the-id-selector{
+        font-size: 24px;
+        background-color: rgb(247, 0, 255);
+        padding: 8px;
+    }
+    .my-class-selector{
+        font-family: Helvetica;
+        font-size: 24px;
+        color: blue;
+    }
+    .bg-color{
+        background-color: red;
+    }
+    h1{
+        color: blue;
+    }
+    div.container{
+        background-color: pink;
+    }
+
+    div,P{
+        min-height: 20px;
+        border: 2px solid #333;
+        margin: 4px;
+        background-color: #fff;
+        text-align: center;
+    }
+    .container-two div{
+        background-color: yellow;
+    }
+    .container-three>div{
+        background-color: cadetblue;
+    }
+    .container-four+div{
+        background-color: red;
+    }
+    .container-five~div{
+        background-color: rgb(201, 143, 201);
+    }
+    a{
+        display: block;
+        font-size: 32px;
+        padding: 8px;
+        color: blue;
+    }
+    a:hover{
+        color: red;
+    }
+    a[title]{
+        color: red;
+    }
+    a[href="http://www.google.com"]{
+        color: aqua;
+    }
+    </style>
 </head>
 <body>
-    
+    <img src="http://placekitten.com/200/200" style="border-radius:10px">
+    <div id="the-id-selector">
+        coding startup  id select
+    </div>
+    <br>
+    <div class="my-class-selector bg-color">
+        coding startup  class select
+    </div>
+    <br>
+    <h1 class="container">coding startup  h1</h1>
+    <div class="container">coding startup  h1对比div</div>
+    <br>
+    <div class="container-two">
+        <div></div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div></div>
+    </div>
+    <br>
+    <div class="container-three">
+        <div></div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div></div>
+    </div>
+    <br>
+    <div class="container-four">
+        <div></div>
+    </div>
+    <div></div>
+    <br>    <br>
+    <div class="container-five">
+        <div></div>
+    </div>
+    <br>
+    <div></div>
+    <div></div>
+    <hr>
+    <div></div>
+    <br>
+    <a href="http://www.apple.com" title="Apple">APPLE</a>
+    <a href="http://www.google.com">GOOGLE</a>
+    <a href="http://www.facebook.com">FACEBOOK</a>
 </body>
 </html>
