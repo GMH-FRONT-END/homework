@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="iconfont.css" />
+    <title>Flexbox网页布局完全解构</title>
+    <style>
+        .flex-container{
+            display: flex;
+            background-color: #044bd9;
+            width: 500px;
+            height: 300px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    .box{
+        width: 60px;
+        height: 60px;
+        flex-basis:auto;
+        flex-grow: 1;
+        background-color: #eee;
+        text-align: center;
+        line-height: 60px;
+        border-radius: 4px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, .18);
+        font-size: 2em;
+    }
+    .A{ background-color: #6dd9bf; }
+    .B{ background-color: #50A181; order: -1;}
+    .C{ background-color: #F2D680;order:1;align-self: flex-end;flex-grow: 2 }
+    .D{ background-color: #F2916D; }
+    .E{ background-color: #F26E50; }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-around;
+        background-color: #eee;
+    }
+    ul>li a{
+        display: block;
+        padding: 4px 8px;
+    }
+    .hamburger ul{
+        list-style: none;
+        margin: 4px 8px;
+        padding: 0;
+        display: flex;
+        background-color: #333;
+    }
+    .hamburger ul li{
+        color: #fff;
+    }
+    .hamburger ul li.logo{
+        flex: 1 1 auto;
+        text-align: center;
+    }
+    .iconfont{
+        font-size: 20px;
+    }
+    .post{
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #eee;
+    }
+    .post .thumbnail img{
+        border-radius: 100%;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .post .thumbnail{
+        flex: 0 1 200px;
+        min-width: 100px;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1.2em;
+        flex: 1 1 auto;
+    }
+    .content h4{
+        font-weight: bold;
+    }
+    .content .excerpt{
+        font-size: 1.5em;
+        color: #666;
+    }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="box A">A</div>
+        <div class="box B">B</div>
+        <div class="box C">C</div>
+        <div class="box D">D</div>
+        <div class="box E">E</div>
+    </div>
+    导航栏：
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Portfplio</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </ul>
+<br><br>
+    <div class="hamburger">
+        <ul>
+            <li><i class="icon iconfont iconfenlei_liebiao"></i></li>
+            <li class="logo"><i class="icon iconfont iconHamburger"></i></li>
+            <li><i class="icon iconfont icongouwuche"></i></li>
+        </ul>
+    </div>
+    <br><br>
+    <div class="post">
+        <div class="thumbnail">
+            <img src="http://placekitten.com/200/200" alt="">
+        </div>
+        <div class="content">
+            <h4 class="title">Flexbox Example</h4>
+            <div class="excerpt">
+                二季度前半段，海外疫情持续加速利空铜价，同时威胁供应端铜矿的供应安
+                铜价底部剧烈震荡；后半段有望出现疫情拐点能叠加我国需求回升推动铜价修正反弹。其一，海外疫情处于爆发期，按照海外的
+                控进展看，海外的疫情拐点预计将在5月到来，市场风险情绪有望提前一小段时间修复。
+            </div>
+        </div>
+    </div>
+    <div class="post">
+        <div class="thumbnail">
+            <img src="http://placekitten.com/200/200" alt="">
+        </div>
+        <div class="content">
+            <h4 class="title">Flexbox Example</h4>
+            <div class="excerpt">
+                二季度前半段，海外疫情持续加速利空铜价，同时威胁供应端铜矿的供应安
+                铜价底部剧烈震荡；后半段有望出现疫情拐点能叠加我国需求回升推动铜价修正反弹。其一，海外疫情处于爆发期，按照海外的
+                控进展看，海外的疫情拐点预计将在5月到来，市场风险情绪有望提前一小段时间修复。
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
