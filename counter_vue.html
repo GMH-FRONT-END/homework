@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>用 vue做计数器</title>
+    <style type="text/css">
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+    #counter{
+        display: inline-flex;
+        border: 3px solid #07c6dd;
+        border-radius: 20px;
+        background-color: #07c6dd;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, .18);
+    }
+    #counter button{
+        border: 0;
+        background-color: transparent;
+        color: #fff;
+        font-size: 24px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        display:inline-block;
+        appearance: none;
+        width: 60px;
+        text-align: center;
+        font-size: 22px;
+        border-radius: 2px;
+    }
+    </style>
+</head>
+<body>
+    <div id="counter">
+        <button @click="subtract">-</button>
+        <input type="text" v-model="count">
+        <button v-on:click="add">+</button>
+    </div>
+        <script>
+        new Vue({
+            el:'#counter',
+            data:{
+                count:0
+            },
+            methods:{
+                 add(){
+                     this.count++
+                 },
+                 subtract(){
+                     this.count--
+                 }
+            }
+        })    
+        </script>
+</body>
+</html>
