@@ -100,6 +100,7 @@ function Square(props){
         const winner=calculateWinner(current.squares);
 
         const moves=history.map((step,move)=>{
+          console.log(move,step);
             const desc=move?
             'Go to move it'+move:
             'Go to game start';
