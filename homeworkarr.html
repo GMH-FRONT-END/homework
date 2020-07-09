@@ -20,12 +20,21 @@
     <div id="smaller">给一个数和一个数组，找出这个数组中比这个数字小的两组数</div>
     <div id="add">给一个数组 算连加</div>
     <div id="multiply">给一个数组 算连乘</div>
-    <div id="sortbig">给一个数组 将这个数组排序从大到小</div>
-    <div id="sortsmall">给一个数组 将这个数组排序从小到大</div>
+    <div id="sortbig">给一个数组 将这个数组排序从小到大</div>
+    <div id="sortsmall">给一个数组 将这个数组排序从大到小</div>
     <div id="reverse">给一个数组，将这个数组翻转</div>
+    <div id="diffrent">给两个数组，找出两组数字中的不同的数</div>
+    <div id="same">给两个数组，找出两组数字中的相同的数</div>
+    <div id="biggest">找出一个数组中的最大的一个数</div>
+    <div id="smallest">找出一个数组中的最小的一个数</div>
+    <div id="putoff">去掉一个数组中的相同项 并返回去掉后的数组</div>
+    
     <script>
     const arr=[1,3,2,4,6,5,7,10,9];
     const arr_reverse=[1,2,3,4,5];
+    const big=[1,2,4,3,6,7,10];
+    const small=[2,4,3,6,9,8,10];
+    const put=[1,2,3,3,2,1];
     const num=4;
     function bigger(arr){
         console.log(arr.filter((e)=>e>num));
@@ -52,6 +61,26 @@
     function reverse(arr){
         console.log(arr.reverse());
     }
+    function diffrent(arr1,arr2){
+        console.log(
+            arr1.concat(arr2).filter((e,i,arr)=>arr.indexOf(e)===arr.lastIndexOf(e))
+        );
+    }
+    function same(arr1,arr2){
+        var a=new Set(arr1);
+        var b=new Set(arr2);
+        console.log([...a].filter(e=>b.has(e)));
+    }
+    function biggest(arr){
+        console.log(Math.max.apply(null,arr));
+    }
+    function smallest(arr){
+        console.log(Math.min.apply(null,arr));
+    }
+    function putoff(arr){
+        var a=new Set(arr);
+        console.log([...a]);
+    }
     $('#bigger').on('click',function(){
         bigger(arr);
     }); 
@@ -73,7 +102,21 @@
     $('#reverse').on('click',function(){
         reverse(arr_reverse);
     });
-    
+    $('#diffrent').on('click',function(){
+        diffrent(arr,arr_reverse);
+    });
+    $('#same').on('click',function(){
+        same(arr,arr_reverse);
+    });
+    $('#biggest').on('click',function(){
+        biggest(big);
+    });
+    $('#smallest').on('click',function(){
+        smallest(small);
+    });
+    $('#putoff').on('click',function(){
+        putoff(put);
+    });
     </script>
 </body>
 </html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //在全局执行环境中使用this，表示Global对象，在浏览器中就是window对象
+    console.log(this);//window
+    console.log(typeof this);//object
+    console.log(this===window);//true
+
+    //在函数执行环境中使用this时,如果函数没有明显的作为非window对象的属性，而只是定义了函数，不管这个函数是不是定义在另一个函数中，这个函数中的this仍然表示window对象
+    function A(){
+        //在A函数中定义一个B函数
+        function B(){
+        console.log(this);//window
+        console.log(typeof this);//object
+        console.log(this===window);//true
+        }
+        //在A函数中调用B函数
+        B();
+    }
+    //调用A函数
+    A();
+
+    //在函数执行环境中使用this时,如果函数显式地作为一个非window对象的属性，那么函数中的this就代表这个对象
+    //定义一个对象obj，并为其添加属性name，添加方法objFun
+    var obj={
+        name:"敲代码",
+        objFun:function(){
+            console.log(this); //{name:"敲代码",objFun:f}
+            console.log(typeof this);//object
+            console.log(this===window);//false
+            console.log(this.name);//敲代码
+        }
+    };
+    //调用obj对象的方法
+    obj.objFun();//this绑定到这个对象，也就是obj对象
+
+    //将上面代码稍微修改一下
+    var obj={
+        name:"敲代码",
+        objFun:function(){
+            console.log(this); //window
+            console.log(typeof this);//object
+            console.log(this===window);//true
+            console.log("只是为了看this.name："+this.name+"效果而已");
+        }
+    };
+    var test=obj.objFun;
+    test();
+//这时候，你会神奇的发现，上面例子中的 this 又等于 window 了
+//我们首先要知道 “函数内部this的值不是静态的”，每次你调用一个函数它总是重新求值（但这一过程发生在函数代码实际执行之前），函数内部的this值实际上是由
+//函数被调用的父作用域提供，更重要的是，她依赖实际函数的语法。
+//当函数被调用时，我们看紧邻括号“()”的左边。如果在括号的左侧存在一个引用，传递给调用函数的“this”值是引用所属于的那个对象，否则this的值就是全局对象。
+//我们再接着看看上面的例子，“var test = obj.objFun;” 这里表示没有调用函数，不用管。“test();”这里调用了函数，我们发现在括号“()”的左侧是一个变量
+//test，test不是一个对象的引用，所以this的值就是全局对象。
+
+    //进行一个更加复杂的例子加深理解
+    var name="我是window下的name";
+    var obj={
+        name:"我是obj对象的name",
+        objBar:{
+            name:"我是obj对象内的objbar对象的name",
+            barFun:function(){
+            console.log(this.name);
+            }
+        }
+    };
+    // ()左侧是barFun引用，它指向objBar对象，所以打印出 “我是obj对象内的objbar对象的name”
+    var test1=obj.objBar.objFun(); //我是obj对象内的objbar对象的name
+
+    //()左侧是test2，test2它并不是某个对象的引用，所以打印出 “我是window下的name”
+    var test2=obj.objBar.objFun;
+    test2(); //我是window下的name
+
+    //下面这个看起来复杂，其实抓住一点就行了：()左侧是testBar，testBar并不属于某个对象的引用，当然打印出来的还是 “我是window下的name”
+    var test3=obj.objBar;
+    var testBar=test3.objFun;
+    testBar(); //我是window下的name
+
+    //当通过new运算符来调用函数时，函数被当做一个构造函数，this指向构造函数创建出来的对象
+    var name="我是window下的name";
+    function A(){
+        console.log(this.name);
+    }
+    A();//我是window下的name
+    var objA=new A();//undefined 因为objA中没有name属性
+    </script>
+</body>
+</html>
